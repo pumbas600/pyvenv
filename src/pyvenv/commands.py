@@ -1,6 +1,12 @@
 import sys
 
+from venv import EnvBuilder
 from typing import Optional
+
+
+def create(venv_name: str) -> None:
+    builder = EnvBuilder()
+    builder.create(venv_name)
 
 
 def activate(venv_name: Optional[str]) -> None:
