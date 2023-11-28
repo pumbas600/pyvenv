@@ -4,9 +4,10 @@ from venv import EnvBuilder
 from typing import Optional
 
 
-def create(venv_name: str) -> None:
+def create(venv_dir: str) -> None:
+    """Create a new virtual environment at the given directory."""
     builder = EnvBuilder()
-    builder.create(venv_name)
+    builder.create(venv_dir)
 
 
 def activate(venv_name: Optional[str]) -> None:
