@@ -23,5 +23,7 @@ def _is_venv_active() -> bool:
     """
     Return `True` if the current Python interpreter is running in a virtual environment,
     `False` otherwise.
+
+    See: https://docs.python.org/3/library/venv.html#how-venvs-work.
     """
     return sys.prefix != sys.base_prefix

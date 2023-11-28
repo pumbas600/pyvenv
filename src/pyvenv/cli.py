@@ -1,5 +1,5 @@
 from typing import List
-from pyvenv.commands import create
+from pyvenv.commands import create, current
 
 
 DEFAULT_VENV_DIR = ".venv"
@@ -10,7 +10,7 @@ def handle_command(args: List[str]) -> None:
     arg_count = len(args)
 
     if arg_count == 0:
-        # TODO: Print current venv
+        current()
         return
 
     command = args[0].lower()
