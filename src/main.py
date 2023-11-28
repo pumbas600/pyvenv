@@ -1,6 +1,8 @@
+from pyvenv.commands import current
+
 def main():
     """Venv entrypoint for the CLI."""
-    print("Hello World!")
+    current()
 
 
 if __name__ == '__main__':
