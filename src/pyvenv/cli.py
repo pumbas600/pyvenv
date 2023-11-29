@@ -1,5 +1,5 @@
 from typing import List
-from pyvenv.commands import create_venv, display_current_venv
+from pyvenv.commands import activate_venv, create_venv, display_current_venv
 
 
 DEFAULT_VENV_DIR = ".venv"
@@ -17,3 +17,6 @@ def handle_command(args: List[str]) -> None:
     if command == 'create':
         venv_dir = args[1] if arg_count > 1 else DEFAULT_VENV_DIR
         create_venv(venv_dir)
+    elif command == 'activate':
+        venv_name = args[1] if arg_count > 1 else None
+        activate_venv(venv_name)

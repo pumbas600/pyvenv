@@ -1,3 +1,4 @@
+import os
 import sys
 
 from pathlib import Path
@@ -16,8 +17,17 @@ def create_venv(venv_dir: str) -> None:
     builder.create(venv_dir)
 
 
-def activate(venv_name: Optional[str]) -> None:
-    pass
+def activate_venv(venv_name: Optional[str]) -> None:
+    """
+    See: https://docs.python.org/3/library/os.html#os.name
+    See: https://docs.python.org/3/library/venv.html#how-venvs-work
+    """
+    if os.name == 'posix':
+        pass
+    elif os.name == 'nt': # Windows
+        pass
+    else: # Java
+        pass # Not supported
 
 
 def display_current_venv() -> None:
@@ -38,7 +48,7 @@ def _is_venv_active() -> bool:
     Return `True` if the current Python interpreter is running in a virtual environment,
     `False` otherwise.
 
-    See: https://docs.python.org/3/library/venv.html#how-venvs-work.
+    See: https://docs.python.org/3/library/venv.html#how-venvs-work
     """
     return _get_current_venv_dir() != sys.base_prefix
 
