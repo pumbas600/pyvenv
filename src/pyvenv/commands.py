@@ -12,7 +12,7 @@ def create_venv(venv_dir: str) -> None:
     
     venv_dir -- The directory to create the virtual environment at
     """
-    builder = EnvBuilder()
+    builder = EnvBuilder(with_pip=True)
     builder.create(venv_dir)
 
 
