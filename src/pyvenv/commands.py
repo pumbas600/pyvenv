@@ -1,9 +1,9 @@
-import os
 import sys
 
 from pathlib import Path
 from venv import EnvBuilder
 from typing import Optional
+from colorama import Fore
 
 
 def create_venv(venv_dir: str) -> None:
@@ -30,7 +30,7 @@ def display_current_venv() -> None:
         return
 
     venv_name = _get_current_venv_name()
-    print(f'Current virtual environment: {venv_name}')
+    print(f'Current virtual environment: {Fore.LIGHTGREEN_EX + venv_name}')
 
 
 def _is_venv_active() -> bool:
