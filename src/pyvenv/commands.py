@@ -17,11 +17,16 @@ def create_venv(venv_dir: str) -> None:
     builder.create(venv_dir)
 
 
-def activate_venv(venv_name: Optional[str]) -> None:
+def activate_venv(venv_dir: str) -> None:
     """
     See: https://docs.python.org/3/library/os.html#os.name
     See: https://docs.python.org/3/library/venv.html#how-venvs-work
     """
+    venv_path = Path(venv_dir)
+    if not _is_venv_dir(venv_path):
+        print(f'Could not find the virtual environment "{Fore.LIGHTCYAN_EX + venv_dir + Fore.RESET}"')
+        return
+
     if os.name == 'posix':
         pass
     elif os.name == 'nt': # Windows
@@ -40,7 +45,17 @@ def display_current_venv() -> None:
         return
 
     venv_name = _get_current_venv_name()
-    print(f'Current virtual environment: {Fore.LIGHTGREEN_EX + venv_name}')
+    print(f'Current virtual environment: {Fore.LIGHTGREEN_EX + venv_name + Fore.RESET}')
+
+
+def _is_venv_dir(venv_path: Path) -> bool:
+    """
+    Return `True` if the given directory is a virtual environment, `False` otherwise. This
+    is determined by checking that the directory exists and it contains the `pyvenv.cfg` file.
+    
+    venv_path -- The path to the virtual environment directory
+    """
+    return venv_path.exists() and venv_path.is_dir() and venv_path.joinpath('pyvenv.cfg').exists()
 
 
 def _is_venv_active() -> bool:

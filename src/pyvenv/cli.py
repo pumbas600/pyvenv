@@ -18,5 +18,5 @@ def handle_command(args: List[str]) -> None:
         venv_dir = args[1] if arg_count > 1 else DEFAULT_VENV_DIR
         create_venv(venv_dir)
     elif command == 'activate':
-        venv_name = args[1] if arg_count > 1 else None
+        venv_name = args[1] if arg_count > 1 else DEFAULT_VENV_DIR
         activate_venv(venv_name)
