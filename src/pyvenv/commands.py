@@ -1,6 +1,7 @@
 import os
 import sys
 
+from pathlib import Path
 from venv import EnvBuilder
 from typing import Optional
 
@@ -9,7 +10,7 @@ def create_venv(venv_dir: str) -> None:
     """
     Create a new virtual environment at the given directory.
     
-    venv_dir - The directory to create the virtual environment at.
+    venv_dir -- The directory to create the virtual environment at
     """
     builder = EnvBuilder()
     builder.create(venv_dir)
@@ -28,15 +29,8 @@ def display_current_venv() -> None:
         print("No virtual environment is currently active.")
         return
 
-    # Include the separator at the end of the current working directory so that it gets
-    # removed by `str.removeprefix()`.
-    cwd = os.getcwd() + os.sep
-    venv_dir = sys.prefix
-
-    if venv_dir.startswith(cwd):
-        venv_dir = venv_dir.removeprefix(cwd)
-
-    print(f'Current virtual environment: {venv_dir}')
+    venv_name = _get_current_venv_name()
+    print(f'Current virtual environment: {venv_name}')
 
 
 def _is_venv_active() -> bool:
@@ -46,4 +40,21 @@ def _is_venv_active() -> bool:
 
     See: https://docs.python.org/3/library/venv.html#how-venvs-work.
     """
-    return sys.prefix != sys.base_prefix
+    return _get_current_venv_dir() != sys.base_prefix
+
+
+def _get_current_venv_dir() -> str:
+    """
+    Return the directory of the current virtual environment. If there is no current virtual
+    environment, this is the same as `sys.base_prefix`.
+    """
+    return sys.prefix
+
+
+def _get_current_venv_name() -> str:
+    """
+    Return the name of the current virtual environment. This is defined as the name of
+    the folder containing the virtual environment.
+    """
+    venv_path = Path(_get_current_venv_dir())
+    return venv_path.parent.name
