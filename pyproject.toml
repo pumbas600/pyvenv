@@ -1,0 +1,16 @@
+[project]
+name = "pyvenv"
+version = "0.0.1"
+authors = [
+    { name = "Josh Jeffers", email = "joshjeffers600@gmail.com" },
+]
+description = "A lightweight python virtual environment management CLI tool"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/pumbas600/pyvenv"
+Issues = "https://github.com/pumbas600/pyvenv/issues"
