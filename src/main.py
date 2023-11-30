@@ -3,8 +3,9 @@ import sys
 from colorama import init
 from pyvenv.cli import handle_command
 
+
 def main():
-    """Venv entrypoint for the CLI."""
+    """PyVenv entrypoint for the CLI."""
     init()
 
     args = sys.argv[1:]

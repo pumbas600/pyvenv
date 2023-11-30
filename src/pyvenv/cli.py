@@ -1,11 +1,10 @@
-from typing import List
 from pyvenv.commands import activate_venv, create_venv, display_current_venv
 
 
 DEFAULT_VENV_DIR = ".venv"
 
 
-def handle_command(args: List[str]) -> None:
+def handle_command(args: list[str]) -> None:
     """Handle the command with the given CLI arguments."""
     arg_count = len(args)
 
