@@ -13,9 +13,12 @@ def handle_command(args: list[str]) -> None:
         return
 
     command = args[0].lower()
-    if command == 'create':
+    if command == 'current':
+        display_current_venv()
+    elif command == 'create':
         venv_dir = args[1] if arg_count > 1 else DEFAULT_VENV_DIR
         create_venv(venv_dir)
     elif command == 'activate':
         venv_name = args[1] if arg_count > 1 else DEFAULT_VENV_DIR
         activate_venv(venv_name)
+
